@@ -18,12 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.className, "flex text-sm")}>
-        <nav className="p-2 border-r border-sand-600-light dark:border-sand-600-dark h-screen">
+        <nav className="p-2 border-r bg-stone-100 h-screen">
           Nav
         </nav>
-        <div>
           {children}
-        </div>
       </body>
     </html>
   );

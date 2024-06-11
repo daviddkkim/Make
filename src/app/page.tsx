@@ -1,20 +1,26 @@
-import Image from "next/image";
+import { Button } from "@/components/Button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/Select";
 
 export default function Home() {
   return (
-    <main className="bg-sand-100-light dark:bg-sand-100-dark text-sand-1200-light dark:text-sand-1200-dark  px-4 py-2 ">
-
-      <div className="border border-sand-600-light dark:border-sand-600-dark rounded-md">
+    <main className="bg-stone-100 h-screen w-full  px-4 py-2 ">
+      <div className="border rounded-md">
         <div className=" p-2 flex gap-2">
-          <select>
-            <option>GET</option>
-            <option>POST</option>
-          </select>
+          <Select>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Theme" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="light">Light</SelectItem>
+              <SelectItem value="dark">Dark</SelectItem>
+              <SelectItem value="system">System</SelectItem>
+            </SelectContent>
+          </Select>
           <input placeholder="https://example.com/something" />
-          <button> Submit</button>
+          <Button> Submit</Button>
         </div>
-        <div className="bg-sand-300-light dark:bg-sand-300-dark p-2 border-t border-sand-600-light dark:border-sand-600">
-        hello
+        <div className="bg-stone-200 p-2 border-t">
+          Response
         </div>
       </div>
     </main>
