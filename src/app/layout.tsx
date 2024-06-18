@@ -22,17 +22,20 @@ export default function RootLayout({
         <div className="text-sm flex flex-col overflow-scroll-y">
           <nav className="p-2 border-r bg-stone-100 w-full justify-between flex items-center text-stone-100 border-b sticky top-0">
             <div className="flex gap-2 items-center">
-              <a className="font-mono px-2 w-fit h-[24px] bg-[#0300E0] rounded-md text-xs flex items-center justify-center text-stone-100 mr-6" href="/">
+              <a
+                className="font-mono px-2 w-fit h-[24px] bg-[#0300E0] rounded-md text-xs flex items-center justify-center text-stone-100 mr-6"
+                href="/"
+              >
                 .make
               </a>
-              <a className="text-xs text-stone-700" href="queries">Queries</a>
+              <a className="text-xs text-stone-700" href="queries">
+                Queries
+              </a>
               <a className="text-xs text-stone-700">Apps</a>
             </div>
             <Input className="max-w-[200px]" />
           </nav>
-          <main className="h-[calc(100vh-44px)]">
-            {children}
-          </main>
+          <main className="h-[calc(100vh-44px)]">{children}</main>
         </div>
       </body>
     </html>
