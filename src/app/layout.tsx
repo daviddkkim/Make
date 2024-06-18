@@ -25,8 +25,8 @@ export default function RootLayout({
               <a className="font-mono px-2 w-fit h-[24px] bg-[#0300E0] rounded-md text-xs flex items-center justify-center text-stone-100 mr-6" href="/">
                 .make
               </a>
-              <a className="text-xs" href="queries">Queries</a>
-              <a className="text-xs">Apps</a>
+              <a className="text-xs text-stone-700" href="queries">Queries</a>
+              <a className="text-xs text-stone-700">Apps</a>
             </div>
             <Input className="max-w-[200px]" />
           </nav>
