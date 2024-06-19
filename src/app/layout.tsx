@@ -28,9 +28,13 @@ export default function RootLayout({
               >
                 .make
               </a>
+<<<<<<< HEAD
               <a className="text-xs text-stone-700" href="queries">
                 Queries
               </a>
+=======
+              <a className="text-xs text-stone-700" href="queries">Queries</a>
+>>>>>>> main
               <a className="text-xs text-stone-700">Apps</a>
             </div>
             <Input className="max-w-[200px]" />
