@@ -21,7 +21,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const headersList = headers();
-  console.log(headersList);
   return (
     <html lang="en">
       <body className={inter.className}>
