@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
-import localFont from 'next/font/local'
 import "./globals.css";
 import TopNavigation from "./components/TopNavigation";
-import { cn } from "@/libs/utils";
-
-const monasans = localFont({
-  src: './Mona-Sans.woff2',
-  variable: "--font-mona-sans"
-})
-
-const monaspaceNeon = localFont({
-  src:"./MonaspaceNeonVarVF[wght,wdth,slnt].woff2",
-  variable:"--font-monaspace-neon"
-})
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(monasans.variable, monaspaceNeon.variable)}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body>
         <div className="text-sm flex flex-col overflow-scroll-y">
           <TopNavigation />
           <main className="h-[calc(100vh-44px)]">{children}</main>
