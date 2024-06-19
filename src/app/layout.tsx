@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/libs/utils";
 import { Input } from "@/components/Input";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,13 +27,9 @@ export default function RootLayout({
               >
                 .make
               </a>
-<<<<<<< HEAD
               <a className="text-xs text-stone-700" href="queries">
                 Queries
               </a>
-=======
-              <a className="text-xs text-stone-700" href="queries">Queries</a>
->>>>>>> main
               <a className="text-xs text-stone-700">Apps</a>
             </div>
             <Input className="max-w-[200px]" />
