@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from 'next/font/local'
 import "./globals.css";
-import { Input } from "@/components/Input";
-import Link from "next/link";
-import { cn } from "@/libs/utils";
-import { buttonVariants } from "@/components/Button";
-import { headers } from "next/headers";
 import TopNavigation from "./components/TopNavigation";
+import { cn } from "@/libs/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const monasans = localFont({
+  src: './Mona-Sans.woff2',
+  variable: "--font-mona-sans"
+})
+
+const monaspaceNeon = localFont({
+  src:"./MonaspaceNeonVarVF[wght,wdth,slnt].woff2",
+  variable:"--font-monaspace-neon"
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,10 +24,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = headers();
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn(monasans.variable, monaspaceNeon.variable)}>
         <div className="text-sm flex flex-col overflow-scroll-y">
           <TopNavigation />
           <main className="h-[calc(100vh-44px)]">{children}</main>

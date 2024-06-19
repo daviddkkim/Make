@@ -10,6 +10,11 @@
 body {
   color: var(--foreground-rgb);
   background: var(--background-rgb);
+  font-family: var(--font-mona-sans);
+}
+
+pre {
+  font-family: var(--font-monaspace-neon)
 }
 
 @layer utilities {
