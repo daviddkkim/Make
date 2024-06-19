@@ -15,8 +15,8 @@ const buttonVariants = cva(
           "text-sand-1200-light dark:text-sand-1200-dark border border-input bg-sand-100-light dark:bg-sand-100-dark hover:bg-sand-200-light dark:hover:bg-sand-200-dark",
         secondary:
           "bg-primary-300-light dark:bg-primary-300-dark border border-color-primary-600-light dark:border-color-primary-600-dark text-primary-1200-light dark:text-primary-1200-dark hover:bg-primary-400-light hover:bg-primary-400-dark",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        ghost: "text-stone-600 hover:bg-stone-200/50 hover:text-stone-800",
+        link: "text-stone-700 underline-offset-4 hover:underline hover:text-stone-950",
       },
       size: {
         default: "h-7 px-3",
