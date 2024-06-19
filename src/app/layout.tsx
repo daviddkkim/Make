@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import { Input } from "@/components/Input";
-import Link from "next/link";
-import { cn } from "@/libs/utils";
-import { buttonVariants } from "@/components/Button";
-import { headers } from "next/headers";
 import TopNavigation from "./components/TopNavigation";
-
-const inter = Inter({ subsets: ["latin"] });
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,10 +14,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = headers();
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body>
         <div className="text-sm flex flex-col overflow-scroll-y">
           <TopNavigation />
           <main className="h-[calc(100vh-44px)]">{children}</main>

@@ -52,8 +52,8 @@ export default function QueryClient() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="border rounded-md w-full">
-          <div className=" p-2 flex gap-2 w-full">
+        <div className="rounded-md w-full">
+          <div className="py-2 flex gap-2 w-full">
             <FormField
               name="method"
               control={form.control}
@@ -97,7 +97,7 @@ export default function QueryClient() {
           <div className="bg-stone-200 p-2 border-t text-xs flex flex-col">
             <h2 className="text-xs font-medium">Response</h2>
             {response ? (
-              <p className="text-xs"> {JSON.stringify(response)}</p>
+              <pre className="text-xs"> {JSON.stringify(response)}</pre>
             ) : (
               ""
             )}
