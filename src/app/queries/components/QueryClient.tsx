@@ -37,8 +37,7 @@ export default function QueryClient() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+    // to-do: Make request at server-side to dodge cors.
     try {
       fetch(values.url, {
         method: values.method,
@@ -97,7 +96,6 @@ export default function QueryClient() {
           </div>
           <div className="bg-stone-200 p-2 border-t text-xs flex flex-col">
             <h2 className="text-xs font-medium">Response</h2>
-
             {response ? (
               <p className="text-xs"> {JSON.stringify(response)}</p>
             ) : (
