@@ -15,11 +15,10 @@ const config: Config = {
         //          "primary-button": "linear-gradient(to bottom, #0300e0, #0300e0 ),linear-gradient(to bottom,#0000 50%, #00000017),linear-gradient(to bottom,#0000 50%, #0300e0 80%)"
       },
       boxShadow: {
-        "primary-button": "inset 0 0 0 1px #00000017,inset 0 -2px 1px #0000000f,inset 0 0 0 1px #0300e0, inset 0 4px 2px -2px #00000072,inset 0 2px 1px -1px #00000072",
-
+        "primary-button":
+          "inset 0 0 0 1px #00000017,inset 0 -2px 1px #0000000f,inset 0 0 0 1px #0300e0, inset 0 4px 2px -2px #00000072,inset 0 2px 1px -1px #00000072",
       },
     },
-
   },
   plugins: [],
 };

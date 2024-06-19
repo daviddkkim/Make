@@ -1,0 +1,27 @@
+on:
+  pull_request:
+    branches:
+    - main
+    
+# Cancel old builds on new commit for same workflow + branch/PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      # Installing all dependencies takes up to three minutes, hacking around to only installing prettier+deps
+      - name: Download dependencies
+        run: |
+          npm ci
+      - name: Run prettier
+        run: |-
+          npm run prettier:check
