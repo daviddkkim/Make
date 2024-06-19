@@ -31,7 +31,7 @@ const TopNavigation = () => {
           className={cn(
             buttonVariants({ variant: "ghost" }),
             "text-xs relative",
-            `${segment === "apps" && "bg-stone-300 hover:bg-stone-300 text-stone-950"}`,
+            `${segment === "apps" && "bg-stone-200 hover:bg-stone-200 text-stone-950"}`,
           )}
           href="apps"
         >
