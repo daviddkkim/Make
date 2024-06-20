@@ -32,8 +32,8 @@ export default function QueryClient() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      method: "get"
-    }
+      method: "get",
+    },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -60,7 +60,10 @@ export default function QueryClient() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
                       <SelectTrigger className="w-[160px]">
                         <SelectValue />
                       </SelectTrigger>
