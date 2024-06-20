@@ -8,9 +8,10 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/Form";
+import { Check } from "lucide-react";
 import { Input } from "@/components/Input";
 import { useForm } from "react-hook-form";
-
+import { JSONTree } from "react-json-tree";
 import {
   Select,
   SelectContent,
@@ -21,6 +22,7 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { theme } from "./JSONTreetheme";
 
 const formSchema = z.object({
   method: z.enum(["get", "post", "put", "patch", "delete"]),
@@ -97,12 +99,22 @@ export default function QueryClient() {
             />
             <Button type="submit"> Submit</Button>
           </div>
-          <div className="bg-stone-200 p-2 border-t text-xs flex flex-col">
-            <h2 className="text-xs font-medium">Response</h2>
+          <div className="bg-stone-100 rounded-md p-2 border text-xs flex flex-col">
             {response ? (
-              <pre className="text-xs"> {JSON.stringify(response)}</pre>
+              <>
+                <p className="text-xs flex">
+                  {" "}
+                  <div className="rounded-md border border-emerald-600 bg-gradient-to-b from-emerald-400 to-emerald-500 w-[16px] h-[16px] flex items-center justify-center mr-1">
+                    <Check size={10} className="text-emerald-50" />
+                  </div>
+                  Query success
+                </p>
+                <JSONTree data={response} theme={theme} invertTheme={false} />
+              </>
             ) : (
-              ""
+              <h2 className="text-xs text-stone-500">
+                Click submit to run query
+              </h2>
             )}
           </div>
         </div>
@@ -110,3 +122,12 @@ export default function QueryClient() {
     </Form>
   );
 }
+
+/*
+base_experience:101
+height:3
+id:132
+is_default:true
+location_area_encounters:"https://pokeapi.co/api/v2/pokemon/132/encounters"
+name:"ditto"
+*/
