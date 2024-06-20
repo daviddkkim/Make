@@ -11,7 +11,7 @@ import {
 import { Check } from "lucide-react";
 import { Input } from "@/components/Input";
 import { useForm } from "react-hook-form";
-import { JSONTree } from 'react-json-tree';
+import { JSONTree } from "react-json-tree";
 import {
   Select,
   SelectContent,
@@ -102,14 +102,19 @@ export default function QueryClient() {
           <div className="bg-stone-100 rounded-md p-2 border text-xs flex flex-col">
             {response ? (
               <>
-                <p className="text-xs flex"> <div className="rounded-md border border-emerald-600 bg-gradient-to-b from-emerald-400 to-emerald-500 w-[16px] h-[16px] flex items-center justify-center mr-1">
-                <Check size={10} className="text-emerald-50"/>
-                </div>Query success</p>
+                <p className="text-xs flex">
+                  {" "}
+                  <div className="rounded-md border border-emerald-600 bg-gradient-to-b from-emerald-400 to-emerald-500 w-[16px] h-[16px] flex items-center justify-center mr-1">
+                    <Check size={10} className="text-emerald-50" />
+                  </div>
+                  Query success
+                </p>
                 <JSONTree data={response} theme={theme} invertTheme={false} />
-
               </>
             ) : (
-              <h2 className="text-xs text-stone-500">Click submit to run query</h2>
+              <h2 className="text-xs text-stone-500">
+                Click submit to run query
+              </h2>
             )}
           </div>
         </div>
