@@ -23,7 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 
 const formSchema = z.object({
-  method: z.string(),
+  method: z.enum(["get", "post", "put", "patch", "delete"]),
   url: z.string(),
 });
 
@@ -32,8 +32,8 @@ export default function QueryClient() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      method: "get",
-    },
+      method: "get"
+    }
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -60,7 +60,7 @@ export default function QueryClient() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Select defaultValue="method" {...field}>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <SelectTrigger className="w-[160px]">
                         <SelectValue />
                       </SelectTrigger>
