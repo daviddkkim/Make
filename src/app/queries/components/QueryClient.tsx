@@ -109,10 +109,10 @@ export default function QueryClient() {
               <>
                 <p className="text-xs flex">
                   {" "}
-                  <div className="rounded-md border border-emerald-600 bg-gradient-to-b from-emerald-400 to-emerald-500 w-[16px] h-[16px] flex items-center justify-center mr-1">
-                    <Check size={10} className="text-emerald-50" />
+                  <div className="rounded-md border border-green-600 bg-gradient-to-b from-green-500 to-green-600 w-[16px] h-[16px] flex items-center justify-center mr-1">
+                    <Check size={10} className="text-green-50" />
                   </div>
-                  Query success
+                  Your query successfully ran
                 </p>
                 <JSONTree data={response} theme={theme} invertTheme={false} />
               </>
