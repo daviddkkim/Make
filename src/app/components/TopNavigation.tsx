@@ -6,12 +6,7 @@ import { Input } from "@/components/Input";
 import { cn } from "@/libs/utils";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
-import {
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 const TopNavigation = () => {
   const { isLoaded, userId, sessionId, getToken } = useAuth();
 
@@ -38,26 +33,25 @@ const TopNavigation = () => {
           <Link
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "text-xs relative"
+              "text-xs relative",
             )}
             href="apps"
           >
             Apps
           </Link>
         </div>
-        <Input className="max-w-[200px] mr-4 absolute left-[50%] translate-x-[-50%]" placeholder="search..." />
+        <Input
+          className="max-w-[200px] mr-4 absolute left-[50%] translate-x-[-50%]"
+          placeholder="search..."
+        />
         <SignedOut>
-          <SignInButton children={
-            <Button>
-              Sign in
-            </Button>
-          } />
+          <SignInButton children={<Button>Sign in</Button>} />
         </SignedOut>
         <SignedIn>
           <UserButton />
         </SignedIn>
       </nav>
-    )
+    );
   }
 
   const segment = useSelectedLayoutSegment();
@@ -92,7 +86,10 @@ const TopNavigation = () => {
           Apps
         </Link>
       </div>
-      <Input className="max-w-[200px] mr-4 absolute left-[50%] translate-x-[-50%]" placeholder="search..." />
+      <Input
+        className="max-w-[200px] mr-4 absolute left-[50%] translate-x-[-50%]"
+        placeholder="search..."
+      />
       <SignedIn>
         <UserButton />
       </SignedIn>
