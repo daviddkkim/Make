@@ -8,7 +8,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/Form";
-import { Check } from "lucide-react";
+import { Check, Play } from "lucide-react";
 import { Input } from "@/components/Input";
 import { useForm } from "react-hook-form";
 import { JSONTree } from "react-json-tree";
@@ -23,7 +23,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { theme } from "./JSONTreetheme";
-import { toast } from "sonner"
+import { toast } from "sonner";
+
 const formSchema = z.object({
   method: z.enum(["get", "post", "put", "patch", "delete"]),
   url: z.string(),
@@ -86,18 +87,22 @@ export default function QueryClient() {
               name={"url"}
               control={form.control}
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="w-full">
                   <FormControl>
                     <Input
                       placeholder="https://example.com/something"
                       {...field}
+                      className="w-full"
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit"> Submit</Button>
+            <Button type="submit" size={"icon"}>
+              {" "}
+              <Play size="14" className="text-stone-50" />
+            </Button>
           </div>
           <div className="bg-stone-100 rounded-md p-2 border text-xs flex flex-col">
             {response ? (
@@ -122,12 +127,3 @@ export default function QueryClient() {
     </Form>
   );
 }
-
-/*
-base_experience:101
-height:3
-id:132
-is_default:true
-location_area_encounters:"https://pokeapi.co/api/v2/pokemon/132/encounters"
-name:"ditto"
-*/
