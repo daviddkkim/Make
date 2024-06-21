@@ -32,12 +32,12 @@ export default function RootLayout({
                   classNames: {
                     toast:
                       "flex bg-stone-950 border rounded-md align-items px-3 py-2 w-full",
-                    title: "text-xs text-stone-200 font-normal ml-1 leading-5	",
-                    description: "text-xs text-stone-400 font-normal ml-1",
+                    title: "text-sm text-stone-200 font-normal ml-1 leading-5	",
+                    description: "text-sm text-stone-400 font-normal ml-1",
                     actionButton:
-                      "ml-auto text-xs font-normal h-[20px] px-2 flex items-center justify-center rounded-sm text-stone-900 bg-gradient-to-b from-stone-100 to-stone-200 border border-stone-200 bg-transparent",
+                      "ml-auto text-sm font-normal h-[20px] px-2 flex items-center justify-center rounded-sm text-stone-900 bg-gradient-to-b from-stone-100 to-stone-200 border border-stone-200 bg-transparent",
                     cancelButton:
-                      "ml-auto text-xs font-normal h-[20px] px-2 flex items-center justify-center rounded-sm text-stone-900 bg-gradient-to-b from-stone-100 to-stone-200 border border-stone-200 bg-transparent",
+                      "ml-auto text-sm font-normal h-[20px] px-2 flex items-center justify-center rounded-sm text-stone-900 bg-gradient-to-b from-stone-100 to-stone-200 border border-stone-200 bg-transparent",
                   },
                 }}
                 icons={{

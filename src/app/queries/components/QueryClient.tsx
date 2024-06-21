@@ -104,12 +104,12 @@ export default function QueryClient() {
               <Play size="14" className="text-stone-50" />
             </Button>
           </div>
-          <div className="bg-stone-100 rounded-md p-2 border text-xs flex flex-col">
+          <div className="bg-stone-100 rounded-md p-2 border text-sm flex flex-col">
             {response ? (
               <>
-                <p className="text-xs flex">
+                <p className="text-sm flex">
                   {" "}
-                  <div className="rounded-md border border-green-600 bg-gradient-to-b from-green-500 to-green-600 w-[16px] h-[16px] flex items-center justify-center mr-1">
+                  <div className="rounded-md border border-green-600 bg-gradient-to-b from-green-500 to-green-600` w-[16px] h-[16px] flex items-center justify-center mr-1">
                     <Check size={10} className="text-green-50" />
                   </div>
                   Your query successfully ran
@@ -117,7 +117,7 @@ export default function QueryClient() {
                 <JSONTree data={response} theme={theme} invertTheme={false} />
               </>
             ) : (
-              <h2 className="text-xs text-stone-500">
+              <h2 className="text-sm text-stone-500">
                 Click submit to run query
               </h2>
             )}
