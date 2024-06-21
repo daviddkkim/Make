@@ -46,7 +46,9 @@ const TopNavigation = () => {
           placeholder="search..."
         />
         <SignedOut>
-          <SignInButton children={<Button>Sign in</Button>} />
+          <SignInButton>
+            <Button>Sign in</Button>
+          </SignInButton>
         </SignedOut>
         <SignedIn>
           <UserButton />
