@@ -11,6 +11,7 @@
     "prettier:format": "prettier --write \"**/*.{ts,tsx,js,md,mdx,css,yaml}\""
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.1.6",
     "@hookform/resolvers": "^3.6.0",
     "@radix-ui/colors": "^3.0.0",
     "@radix-ui/react-label": "^2.0.2",
