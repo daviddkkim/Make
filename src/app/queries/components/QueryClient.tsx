@@ -24,6 +24,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { theme } from "./JSONTreetheme";
 import { toast } from "sonner";
+
 const formSchema = z.object({
   method: z.enum(["get", "post", "put", "patch", "delete"]),
   url: z.string(),
@@ -126,12 +127,3 @@ export default function QueryClient() {
     </Form>
   );
 }
-
-/*
-base_experience:101
-height:3
-id:132
-is_default:true
-location_area_encounters:"https://pokeapi.co/api/v2/pokemon/132/encounters"
-name:"ditto"
-*/
