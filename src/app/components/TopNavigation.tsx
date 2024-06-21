@@ -9,6 +9,7 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 const TopNavigation = () => {
   const { isLoaded, userId, sessionId, getToken } = useAuth();
+  const segment = useSelectedLayoutSegment();
 
   if (!isLoaded || !userId) {
     return (
@@ -53,8 +54,6 @@ const TopNavigation = () => {
       </nav>
     );
   }
-
-  const segment = useSelectedLayoutSegment();
 
   return (
     <nav className="p-2 border-r bg-stone-100 w-full justify-between flex items-center text-stone-100 border-b sticky top-0 z-10">
