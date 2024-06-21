@@ -8,7 +8,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/Form";
-import { Check } from "lucide-react";
+import { Check, Play } from "lucide-react";
 import { Input } from "@/components/Input";
 import { useForm } from "react-hook-form";
 import { JSONTree } from "react-json-tree";
@@ -86,18 +86,21 @@ export default function QueryClient() {
               name={"url"}
               control={form.control}
               render={({ field }) => (
-                <FormItem>
+                <FormItem
+                  className="w-full"
+                >
                   <FormControl>
                     <Input
                       placeholder="https://example.com/something"
                       {...field}
+                      className="w-full"
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit"> Submit</Button>
+            <Button type="submit" size={"icon"}> <Play size="14" className="text-stone-50" /></Button>
           </div>
           <div className="bg-stone-100 rounded-md p-2 border text-xs flex flex-col">
             {response ? (

@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-stone-900 text-stone-50 hover:bg-stone-800",
+        default: "bg-gradient-to-b from-stone-700 to-stone-900 border border-stone-900 text-stone-50 hover:from-stone-900 hover:to-stone-900",
         destructive: "bg-red-600 text-red-950 hover:bg-red-700",
         outline:
           "text-sand-1200-light dark:text-sand-1200-dark border border-input bg-sand-100-light dark:bg-sand-100-dark hover:bg-sand-200-light dark:hover:bg-sand-200-dark",
@@ -22,7 +22,7 @@ const buttonVariants = cva(
         default: "h-7 px-3",
         sm: "h-6 rounded-md px-2",
         lg: "h-8 rounded-md px-4",
-        icon: "h-8 w-8",
+        icon: "min-h-7 min-w-7 max-h-7 max-w-7",
       },
     },
     defaultVariants: {
