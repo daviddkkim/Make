@@ -23,7 +23,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { theme } from "./JSONTreetheme";
-import { toast } from "sonner"
+import { toast } from "sonner";
 const formSchema = z.object({
   method: z.enum(["get", "post", "put", "patch", "delete"]),
   url: z.string(),
@@ -86,9 +86,7 @@ export default function QueryClient() {
               name={"url"}
               control={form.control}
               render={({ field }) => (
-                <FormItem
-                  className="w-full"
-                >
+                <FormItem className="w-full">
                   <FormControl>
                     <Input
                       placeholder="https://example.com/something"
@@ -100,7 +98,10 @@ export default function QueryClient() {
                 </FormItem>
               )}
             />
-            <Button type="submit" size={"icon"}> <Play size="14" className="text-stone-50" /></Button>
+            <Button type="submit" size={"icon"}>
+              {" "}
+              <Play size="14" className="text-stone-50" />
+            </Button>
           </div>
           <div className="bg-stone-100 rounded-md p-2 border text-xs flex flex-col">
             {response ? (
