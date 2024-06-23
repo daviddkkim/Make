@@ -12,8 +12,7 @@ const buttonVariants = cva(
         default:
           "bg-gradient-to-b from-stone-700 to-stone-900 border border-stone-900 text-stone-50 hover:from-stone-900 hover:to-stone-900",
         destructive: "bg-red-600 text-red-950 hover:bg-red-700",
-        outline:
-          "text-sand-1200-light dark:text-sand-1200-dark border border-input bg-sand-100-light dark:bg-sand-100-dark hover:bg-sand-200-light dark:hover:bg-sand-200-dark",
+        outline: "text-stone-1200 border bg-transparent hover:bg-stone-100",
         secondary:
           "bg-primary-300-light dark:bg-primary-300-dark border border-color-primary-600-light dark:border-color-primary-600-dark text-primary-1200-light dark:text-primary-1200-dark hover:bg-primary-400-light hover:bg-primary-400-dark",
         ghost: "text-stone-600 hover:bg-stone-200/50 hover:text-stone-800",
@@ -22,7 +21,7 @@ const buttonVariants = cva(
       size: {
         default: "h-8 px-3",
         sm: "h-6 rounded-md px-2",
-        lg: "h-8 rounded-md px-4",
+        lg: "h-9 rounded-md px-4",
         icon: "min-h-8 min-w-8 max-h-8 max-w-8",
       },
     },
