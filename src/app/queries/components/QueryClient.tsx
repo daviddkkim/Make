@@ -23,7 +23,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { theme } from "./JSONTreetheme";
-import { toast } from "sonner";
 
 const formSchema = z.object({
   method: z.enum(["get", "post", "put", "patch", "delete"]),
