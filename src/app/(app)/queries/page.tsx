@@ -16,11 +16,19 @@ export default function Page() {
               <PlusIcon size={16} className="text-stone-50 mr-1" /> New query{" "}
             </Button>
           </div>
-          <Button variant={"ghost"} className="justify-start rounded-none" size={"lg"}>
+          <Button
+            variant={"ghost"}
+            className="justify-start rounded-none"
+            size={"lg"}
+          >
             {" "}
             Query 1
           </Button>
-          <Button variant={"ghost"} className="justify-start rounded-none" size={"lg"}>
+          <Button
+            variant={"ghost"}
+            className="justify-start rounded-none"
+            size={"lg"}
+          >
             {" "}
             Query 2
           </Button>

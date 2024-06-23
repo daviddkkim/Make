@@ -103,7 +103,11 @@ export default function QueryClient() {
               {" "}
               <Play size="14" className="text-stone-50" />
             </Button>
-            <Button onClick={(e)=>{e.preventDefault()}}>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
               Save
             </Button>
           </div>
