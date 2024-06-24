@@ -22,7 +22,7 @@ export default function QueriesList({
             <Link
               className={cn(
                 buttonVariants({ variant: "ghost" }),
-                "text-sm relative justify-start rounded-none",
+                "text-sm relative justify-start rounded-none px-4",
                 `${activeQuery?.id === item.id && "bg-stone-200 hover:bg-stone-200 text-stone-950"}`,
               )}
               href={`/queries/${item.id.toString()}`}

@@ -23,6 +23,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { theme } from "./JSONTreetheme";
+import { supabaseClient } from "@/libs/supabase/client";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   method: z.enum(["get", "post", "put", "patch", "delete"]),
@@ -45,6 +48,7 @@ export default function QueryClient({
     url?: string;
   };
 }) {
+  const router = useRouter();
   const [response, setResponse] = useState();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -64,6 +68,25 @@ export default function QueryClient({
       });
     } catch (error) {
       console.error("Request error:", error);
+    }
+  }
+
+  async function onSave(values: z.infer<typeof formSchema>) {
+    try {
+
+
+      const response = await supabaseClient.from("api_queries").insert({
+        // name should be dynamic
+        name: "test5",
+        url: values.url,
+        method: values.method
+      });
+      console.log(response)
+      router.refresh();
+      toast.success("success");
+    } catch (error) {
+      console.error("Request error:", error);
+      toast.error("Unsccessful")
     }
   }
 
@@ -121,6 +144,7 @@ export default function QueryClient({
             <Button
               onClick={(e) => {
                 e.preventDefault();
+                onSave(form.getValues())
               }}
             >
               Save
