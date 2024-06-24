@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 const TopNavigation = () => {
-  const { isLoaded, userId, sessionId, getToken } = useAuth();
+  const { isLoaded, userId } = useAuth();
   const segment = useSelectedLayoutSegment();
 
   if (!isLoaded || !userId) {
@@ -25,9 +25,9 @@ const TopNavigation = () => {
             className={cn(
               buttonVariants({ variant: "ghost" }),
               "text-sm relative",
-              "bg-stone-200 hover:bg-stone-200 text-stone-950",
+              `${segment === "queries" && "bg-stone-200 hover:bg-stone-200 text-stone-950"}`,
             )}
-            href="queries"
+            href={"/queries"}
           >
             Queries
           </Link>
@@ -35,8 +35,9 @@ const TopNavigation = () => {
             className={cn(
               buttonVariants({ variant: "ghost" }),
               "text-sm relative",
+              `${segment === "apps" && "bg-stone-200 hover:bg-stone-200 text-stone-950"}`,
             )}
-            href="apps"
+            href={"/apps"}
           >
             Apps
           </Link>
@@ -77,7 +78,7 @@ const TopNavigation = () => {
               "text-sm relative",
               `${segment === "queries" && "bg-stone-200 hover:bg-stone-200 text-stone-950"}`,
             )}
-            href="queries"
+            href="/queries"
           >
             Queries
           </Link>
@@ -87,7 +88,7 @@ const TopNavigation = () => {
               "text-sm relative",
               `${segment === "apps" && "bg-stone-200 hover:bg-stone-200 text-stone-950"}`,
             )}
-            href="apps"
+            href="/apps"
           >
             Apps
           </Link>

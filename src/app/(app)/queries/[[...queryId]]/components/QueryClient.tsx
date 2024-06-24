@@ -23,19 +23,35 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { theme } from "./JSONTreetheme";
-import { Label } from "@/components/Label";
 
 const formSchema = z.object({
   method: z.enum(["get", "post", "put", "patch", "delete"]),
   url: z.string(),
 });
 
-export default function QueryClient() {
+export default function QueryClient({
+  activeQuery = {
+    name: "untitled",
+    method: "get"
+  }
+}: {
+  activeQuery?: {
+    id?: string,
+    organization_id?: string,
+    created_by_user_id?: string,
+    name?: string,
+    description?: string,
+    method?: "get" | "post" | "put" | "patch" | "delete",
+    url?: string,
+  }
+}) {
   const [response, setResponse] = useState();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      method: "get",
+      method: activeQuery.method ? activeQuery.method : "get",
+      url: activeQuery.url ? activeQuery.url : "",
+      
     },
   });
 
