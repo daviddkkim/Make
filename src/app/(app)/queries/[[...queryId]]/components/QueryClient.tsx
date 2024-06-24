@@ -73,20 +73,17 @@ export default function QueryClient({
 
   async function onSave(values: z.infer<typeof formSchema>) {
     try {
-
-
       const response = await supabaseClient.from("api_queries").insert({
         // name should be dynamic
         name: "test5",
         url: values.url,
-        method: values.method
+        method: values.method,
       });
-      console.log(response)
       router.refresh();
       toast.success("success");
     } catch (error) {
       console.error("Request error:", error);
-      toast.error("Unsccessful")
+      toast.error("Unsccessful");
     }
   }
 
@@ -144,7 +141,7 @@ export default function QueryClient({
             <Button
               onClick={(e) => {
                 e.preventDefault();
-                onSave(form.getValues())
+                onSave(form.getValues());
               }}
             >
               Save
