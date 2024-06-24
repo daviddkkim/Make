@@ -52,12 +52,6 @@ export default async function Page({
       <PanelLayout
         panelContents={[
           <Panel className="flex flex-col">
-            <div className="px-4 pt-4 pb-2">
-              <Button className="w-full">
-                {" "}
-                <PlusIcon size={16} className="text-stone-50 mr-1" /> New query{" "}
-              </Button>
-            </div>
             <QueriesList
               queries={data ? data : []}
               activeQuery={activeQuery ? activeQuery[0] : {}}

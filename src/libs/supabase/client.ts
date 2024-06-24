@@ -19,8 +19,6 @@ export function createClerkSupabaseClient() {
             template: "supabase",
           });
 
-          console.log("in util: ", clerkToken);
-
           // Construct fetch headers
           const headers = new Headers(options?.headers);
           headers.set("Authorization", `Bearer ${clerkToken}`);
