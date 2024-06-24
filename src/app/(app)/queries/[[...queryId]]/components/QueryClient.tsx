@@ -104,11 +104,7 @@ export default function QueryClient({
               <FormItem className="w-full">
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder="Untitled"
-                    {...field}
-                    className="w-full"
-                  />
+                  <Input placeholder="Untitled" {...field} className="w-full" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
