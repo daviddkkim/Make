@@ -6,6 +6,7 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/components/Form";
 import { Check, Play } from "lucide-react";
@@ -23,19 +24,42 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { theme } from "./JSONTreetheme";
-import { Label } from "@/components/Label";
+import { supabaseClient } from "@/libs/supabase/client";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
+  name: z.string(),
+  description: z.string(),
   method: z.enum(["get", "post", "put", "patch", "delete"]),
   url: z.string(),
 });
 
-export default function QueryClient() {
+export default function QueryClient({
+  activeQuery = {
+    name: "untitled",
+    method: "get",
+  },
+}: {
+  activeQuery?: {
+    id?: string;
+    organization_id?: string;
+    created_by_user_id?: string;
+    name?: string;
+    description?: string;
+    method?: "get" | "post" | "put" | "patch" | "delete";
+    url?: string;
+  };
+}) {
+  const router = useRouter();
   const [response, setResponse] = useState();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      method: "get",
+      name: activeQuery.name ? activeQuery.name : "untitled",
+      description: activeQuery.description ? activeQuery.description : "",
+      method: activeQuery.method ? activeQuery.method : "get",
+      url: activeQuery.url ? activeQuery.url : "",
     },
   });
 
@@ -52,11 +76,58 @@ export default function QueryClient() {
     }
   }
 
+  async function onSave(values: z.infer<typeof formSchema>) {
+    try {
+      await supabaseClient.from("api_queries").insert({
+        // name should be dynamic
+        name: "test5",
+        url: values.url,
+        method: values.method,
+      });
+
+      router.refresh();
+      toast.success("success");
+    } catch (error) {
+      console.error("Request error:", error);
+      toast.error("Unsccessful");
+    }
+  }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="rounded-md w-full">
-          <div className="py-2 flex gap-2 w-full">
+        <div className="rounded-md w-full flex flex-col gap-2">
+          <FormField
+            name={"name"}
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Untitled" {...field} className="w-full" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name={"description"}
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Describe the query"
+                    {...field}
+                    className="w-full"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="py-1 flex gap-2 w-full">
             <FormField
               name="method"
               control={form.control}
@@ -103,7 +174,12 @@ export default function QueryClient() {
               {" "}
               <Play size="14" className="text-stone-50" />
             </Button>
-            <Button onClick={(e)=>{e.preventDefault()}}>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                onSave(form.getValues());
+              }}
+            >
               Save
             </Button>
           </div>
