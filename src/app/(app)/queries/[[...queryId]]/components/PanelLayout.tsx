@@ -7,22 +7,13 @@ import { PlusIcon } from "lucide-react";
 import QueriesList from "./QueriesList";
 import { ReactNode } from "react";
 
-
-const PanelLayout = ({
-    panelContents
-}: {
-    panelContents: ReactNode[]
-}) => {
-
-    return (
-        <PanelGroup autoSaveId="persistence" direction="horizontal">
-            {panelContents.map((content) => {
-
-                return (
-                    content
-                )
-            })}
-            {/* <Panel className="border-r flex flex-col">
+const PanelLayout = ({ panelContents }: { panelContents: ReactNode[] }) => {
+  return (
+    <PanelGroup autoSaveId="persistence" direction="horizontal">
+      {panelContents.map((content) => {
+        return content;
+      })}
+      {/* <Panel className="border-r flex flex-col">
                 <div className="px-4 pt-4 pb-2">
                     <Button className="w-full">
                         {" "}
@@ -37,8 +28,8 @@ const PanelLayout = ({
             </Panel>
             <PanelResizeHandle />
             <Panel className="border-l">right</Panel> */}
-        </PanelGroup>
-    )
-}
+    </PanelGroup>
+  );
+};
 
-export { PanelLayout, Panel, PanelResizeHandle }
+export { PanelLayout, Panel, PanelResizeHandle };

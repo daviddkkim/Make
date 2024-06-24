@@ -32,18 +32,18 @@ const formSchema = z.object({
 export default function QueryClient({
   activeQuery = {
     name: "untitled",
-    method: "get"
-  }
+    method: "get",
+  },
 }: {
   activeQuery?: {
-    id?: string,
-    organization_id?: string,
-    created_by_user_id?: string,
-    name?: string,
-    description?: string,
-    method?: "get" | "post" | "put" | "patch" | "delete",
-    url?: string,
-  }
+    id?: string;
+    organization_id?: string;
+    created_by_user_id?: string;
+    name?: string;
+    description?: string;
+    method?: "get" | "post" | "put" | "patch" | "delete";
+    url?: string;
+  };
 }) {
   const [response, setResponse] = useState();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -51,7 +51,6 @@ export default function QueryClient({
     defaultValues: {
       method: activeQuery.method ? activeQuery.method : "get",
       url: activeQuery.url ? activeQuery.url : "",
-      
     },
   });
 
