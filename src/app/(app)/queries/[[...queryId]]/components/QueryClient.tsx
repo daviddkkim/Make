@@ -6,6 +6,7 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/components/Form";
 import { Check, Play } from "lucide-react";
@@ -28,6 +29,8 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
+  name: z.string(),
+  description: z.string(),
   method: z.enum(["get", "post", "put", "patch", "delete"]),
   url: z.string(),
 });
@@ -53,6 +56,8 @@ export default function QueryClient({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      name: activeQuery.name ? activeQuery.name : "untitled",
+      description: activeQuery.description ? activeQuery.description : "",
       method: activeQuery.method ? activeQuery.method : "get",
       url: activeQuery.url ? activeQuery.url : "",
     },
@@ -91,8 +96,42 @@ export default function QueryClient({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="rounded-md w-full">
-          <div className="py-2 flex gap-2 w-full">
+        <div className="rounded-md w-full flex flex-col gap-2">
+          <FormField
+            name={"name"}
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Untitled"
+                    {...field}
+                    className="w-full"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name={"description"}
+            control={form.control}
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Describe the query"
+                    {...field}
+                    className="w-full"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="py-1 flex gap-2 w-full">
             <FormField
               name="method"
               control={form.control}
