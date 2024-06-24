@@ -56,7 +56,7 @@ export default function QueriesList({
                 `${activeQuery?.id === item.id && "bg-stone-200 hover:bg-stone-200 text-stone-950"}`,
               )}
               href={`/queries/${item.id.toString()}`}
-              id={item.id}
+              key={item.id}
             >
               {item.name}
             </Link>
