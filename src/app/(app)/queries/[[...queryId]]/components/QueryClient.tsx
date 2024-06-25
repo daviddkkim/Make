@@ -6,7 +6,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/Form";
 import { Check, Play } from "lucide-react";
@@ -27,6 +26,7 @@ import { theme } from "./JSONTreetheme";
 import { supabaseClient } from "@/libs/supabase/client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/Popover";
 
 const formSchema = z.object({
   name: z.string(),
@@ -37,7 +37,7 @@ const formSchema = z.object({
 
 export default function QueryClient({
   activeQuery = {
-    name: "untitled",
+    name: "",
     method: "get",
   },
 }: {
@@ -56,7 +56,7 @@ export default function QueryClient({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: activeQuery.name ? activeQuery.name : "untitled",
+      name: activeQuery.name ? activeQuery.name : "",
       description: activeQuery.description ? activeQuery.description : "",
       method: activeQuery.method ? activeQuery.method : "get",
       url: activeQuery.url ? activeQuery.url : "",
@@ -94,39 +94,62 @@ export default function QueryClient({
   }
 
   return (
-    <Form {...form}>
+    <Form {...form} >
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="rounded-md w-full flex flex-col gap-2">
-          <FormField
-            name={"name"}
-            control={form.control}
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Untitled" {...field} className="w-full" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            name={"description"}
-            control={form.control}
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Describe the query"
-                    {...field}
-                    className="w-full"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+        <div className="rounded-md w-full flex flex-col gap-2" >
+          <div className="flex justify-between border-b w-full">
+            <div>
+              <FormField
+                name={"name"}
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem className="w-full flex">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button variant={"ghost"} className="text-stone-950 text-base">{field.value}</Button>
+                      </PopoverTrigger>
+                      <PopoverContent >
+                        <FormControl>
+                          <Input placeholder="Untitled" {...field} className="w-full" />
+                        </FormControl>
+                      </PopoverContent>
+                    </Popover>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                name={"description"}
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button variant={"ghost"} className="text-stone-500">{field.value ? field.value : "Add a description"}</Button>
+                      </PopoverTrigger>
+                      <PopoverContent >
+                        <FormControl>
+                          <Input
+                            placeholder="Describe the query"
+                            {...field}
+                            className="w-full"
+                          />
+                        </FormControl>
+                      </PopoverContent>
+                    </Popover>
+                  </FormItem>
+                )}
+              />
+            </div>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                onSave(form.getValues());
+              }}
+              variant={"secondary"}
+            >
+              Save
+            </Button>
+          </div>
           <div className="py-1 flex gap-2 w-full">
             <FormField
               name="method"
@@ -173,14 +196,6 @@ export default function QueryClient({
             <Button type="submit" size={"icon"}>
               {" "}
               <Play size="14" className="text-stone-50" />
-            </Button>
-            <Button
-              onClick={(e) => {
-                e.preventDefault();
-                onSave(form.getValues());
-              }}
-            >
-              Save
             </Button>
           </div>
           <div className="bg-stone-100 rounded-md p-2 border text-sm flex flex-col">
