@@ -42,8 +42,8 @@ export default function QueriesList({
     <div className="flex flex-col">
       <div className="px-4 pt-4 pb-2">
         <Button className="w-full" onClick={createNewQuery}>
-          {" "}
-          <PlusIcon size={16} className="text-stone-50 mr-1" /> New query{" "}
+          <PlusIcon size={16} className="text-stone-50 mr-1 flex-none" />
+          <span className="truncate"> New query</span>
         </Button>
       </div>
       {queries.length > 0 &&
