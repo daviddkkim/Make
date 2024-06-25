@@ -94,9 +94,9 @@ export default function QueryClient({
   }
 
   return (
-    <Form {...form} >
+    <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="rounded-md w-full flex flex-col gap-2" >
+        <div className="rounded-md w-full flex flex-col gap-2">
           <div className="flex justify-between border-b w-full">
             <div>
               <FormField
@@ -106,11 +106,20 @@ export default function QueryClient({
                   <FormItem className="w-full flex">
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button variant={"ghost"} className="text-stone-950 text-base">{field.value}</Button>
+                        <Button
+                          variant={"ghost"}
+                          className="text-stone-950 text-base"
+                        >
+                          {field.value}
+                        </Button>
                       </PopoverTrigger>
-                      <PopoverContent >
+                      <PopoverContent>
                         <FormControl>
-                          <Input placeholder="Untitled" {...field} className="w-full" />
+                          <Input
+                            placeholder="Untitled"
+                            {...field}
+                            className="w-full"
+                          />
                         </FormControl>
                       </PopoverContent>
                     </Popover>
@@ -124,9 +133,11 @@ export default function QueryClient({
                   <FormItem className="w-full">
                     <Popover>
                       <PopoverTrigger asChild>
-                        <Button variant={"ghost"} className="text-stone-500">{field.value ? field.value : "Add a description"}</Button>
+                        <Button variant={"ghost"} className="text-stone-500">
+                          {field.value ? field.value : "Add a description"}
+                        </Button>
                       </PopoverTrigger>
-                      <PopoverContent >
+                      <PopoverContent>
                         <FormControl>
                           <Input
                             placeholder="Describe the query"
