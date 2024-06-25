@@ -51,7 +51,7 @@ export default async function Page({
     <main className="bg-stone-50 h-[calc(100vh-48px)] w-full ">
       <PanelLayout
         panelContents={[
-          <Panel className="flex flex-col" key={1}>
+          <Panel className="flex flex-col" key={1} defaultSize={20}>
             <div style={{ overflow: "auto" }} className="h-full">
               <QueriesList
                 queries={data ? data : []}
@@ -60,13 +60,13 @@ export default async function Page({
             </div>
           </Panel>,
           <PanelResizeHandle className="w-[1px] bg-stone-200" key={2} />,
-          <Panel className="px-4 py-2" key={3}>
+          <Panel className="px-4 py-2" key={3} defaultSize={55}>
             <div style={{ overflow: "auto" }} className="h-full">
               <QueryClient activeQuery={activeQuery ? activeQuery[0] : {}} />
             </div>
           </Panel>,
           <PanelResizeHandle className="w-[1px] bg-stone-200" key={4} />,
-          <Panel key={5}>right</Panel>,
+          <Panel key={5} defaultSize={25}>right</Panel>,
         ]}
       />
 

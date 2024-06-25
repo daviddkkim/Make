@@ -37,12 +37,13 @@ const formSchema = z.object({
 
 export default function QueryClient({
   activeQuery = {
+    id: null,
     name: "",
     method: "get",
   },
 }: {
   activeQuery?: {
-    id?: string;
+    id?: number | null;
     organization_id?: string;
     created_by_user_id?: string;
     name?: string;
@@ -56,7 +57,7 @@ export default function QueryClient({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: activeQuery.name ? activeQuery.name : "",
+      name: activeQuery.name ? activeQuery.name : "Untitled",
       description: activeQuery.description ? activeQuery.description : "",
       method: activeQuery.method ? activeQuery.method : "get",
       url: activeQuery.url ? activeQuery.url : "",
@@ -78,14 +79,25 @@ export default function QueryClient({
 
   async function onSave(values: z.infer<typeof formSchema>) {
     try {
-      await supabaseClient.from("api_queries").insert({
+      const { data, error } = await supabaseClient.from("api_queries").upsert({
         // name should be dynamic
-        name: "test5",
+        id: activeQuery.id ? activeQuery.id : undefined,
+        name: values.name,
         url: values.url,
         method: values.method,
-      });
+      }).select();
 
-      router.refresh();
+      //make sure it succeeded
+      if (data) {
+        //if active query id and data id is same, it means it was an update, so just refresh
+        if (data[0].id === activeQuery.id) {
+          router.refresh();
+        } else {
+          //this means it was a new insert, that menas we want to navigate to the saved.
+          router.push(`/queries/${data[0].id.toString()}`);
+        }
+      }
+
       toast.success("success");
     } catch (error) {
       console.error("Request error:", error);
