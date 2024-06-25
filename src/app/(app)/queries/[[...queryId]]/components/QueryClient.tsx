@@ -79,13 +79,16 @@ export default function QueryClient({
 
   async function onSave(values: z.infer<typeof formSchema>) {
     try {
-      const { data, error } = await supabaseClient.from("api_queries").upsert({
-        // name should be dynamic
-        id: activeQuery.id ? activeQuery.id : undefined,
-        name: values.name,
-        url: values.url,
-        method: values.method,
-      }).select();
+      const { data, error } = await supabaseClient
+        .from("api_queries")
+        .upsert({
+          // name should be dynamic
+          id: activeQuery.id ? activeQuery.id : undefined,
+          name: values.name,
+          url: values.url,
+          method: values.method,
+        })
+        .select();
 
       //make sure it succeeded
       if (data) {

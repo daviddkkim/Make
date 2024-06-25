@@ -66,7 +66,9 @@ export default async function Page({
             </div>
           </Panel>,
           <PanelResizeHandle className="w-[1px] bg-stone-200" key={4} />,
-          <Panel key={5} defaultSize={25}>right</Panel>,
+          <Panel key={5} defaultSize={25}>
+            right
+          </Panel>,
         ]}
       />
 
