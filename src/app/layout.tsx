@@ -20,7 +20,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <body>
-          <div className="text-sm flex flex-col overflow-scroll-y">
+          <div className="text-sm flex flex-col">
             <main className="h-[calc(100vh-44px)]">
               {children}
               <Toaster
