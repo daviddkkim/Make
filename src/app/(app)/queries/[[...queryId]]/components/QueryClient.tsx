@@ -27,6 +27,7 @@ import { supabaseClient } from "@/libs/supabase/client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/Popover";
+import UrlComponent from "./UrlComponent";
 
 const formSchema = z.object({
   name: z.string(),
@@ -176,7 +177,7 @@ export default function QueryClient({
               Save
             </Button>
           </div>
-          <div className="py-1 flex gap-2 w-full">
+          <div className="py-1 flex gap-2 w-full max-w-full">
             <FormField
               name="method"
               control={form.control}
@@ -187,7 +188,7 @@ export default function QueryClient({
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <SelectTrigger className="w-[160px]">
+                      <SelectTrigger className="w-[102px]">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -207,13 +208,22 @@ export default function QueryClient({
               name={"url"}
               control={form.control}
               render={({ field }) => (
-                <FormItem className="w-full">
+                <FormItem className="w-full max-w-[calc(100%-150px)]">
                   <FormControl>
+                    <UrlComponent
+                      {...field}
+                      url={field.value}
+                      placeholder="https://example.com/something"
+                      onBlur={(e) => {
+                        form.setValue("url", e.currentTarget.textContent ? e.currentTarget.textContent : "")
+                      }}
+                    />
+                    {/* 
                     <Input
                       placeholder="https://example.com/something"
                       {...field}
-                      className="w-full"
-                    />
+                      className="w-full hidden"
+                    /> */}
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -227,13 +237,13 @@ export default function QueryClient({
           <div className="bg-stone-100 rounded-md p-2 border text-sm flex flex-col">
             {response ? (
               <>
-                <p className="text-sm flex">
+                <div className="text-sm flex">
                   {" "}
                   <div className="rounded-md border border-green-600 bg-gradient-to-b from-green-500 to-green-600 w-[16px] h-[16px] flex items-center justify-center mr-1">
                     <Check size={10} className="text-green-50" />
                   </div>
                   Your query successfully ran
-                </p>
+                </div>
                 <JSONTree data={response} theme={theme} invertTheme={false} />
               </>
             ) : (
