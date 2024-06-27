@@ -21,7 +21,7 @@ import {
 } from "@/components/Select";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { FocusEventHandler, useState } from "react";
 import { theme } from "./JSONTreetheme";
 import { supabaseClient } from "@/libs/supabase/client";
 import { toast } from "sonner";
@@ -42,6 +42,7 @@ export default function QueryClient({
     name: "",
     method: "get",
   },
+  onUrlChange
 }: {
   activeQuery?: {
     id?: number | null;
@@ -52,6 +53,7 @@ export default function QueryClient({
     method?: "get" | "post" | "put" | "patch" | "delete";
     url?: string;
   };
+  onUrlChange?: FocusEventHandler<HTMLDivElement>;
 }) {
   const router = useRouter();
   const [response, setResponse] = useState();
@@ -216,6 +218,7 @@ export default function QueryClient({
                       placeholder="https://example.com/something"
                       onBlur={(e) => {
                         form.setValue("url", e.currentTarget.textContent ? e.currentTarget.textContent : "")
+                        onUrlChange && onUrlChange(e);
                       }}
                     />
                     {/* 
