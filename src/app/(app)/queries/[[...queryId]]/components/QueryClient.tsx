@@ -42,7 +42,7 @@ export default function QueryClient({
     name: "",
     method: "get",
   },
-  onUrlChange
+  onUrlChange,
 }: {
   activeQuery?: {
     id?: number | null;
@@ -217,7 +217,12 @@ export default function QueryClient({
                       url={field.value}
                       placeholder="https://example.com/something"
                       onBlur={(e) => {
-                        form.setValue("url", e.currentTarget.textContent ? e.currentTarget.textContent : "")
+                        form.setValue(
+                          "url",
+                          e.currentTarget.textContent
+                            ? e.currentTarget.textContent
+                            : "",
+                        );
                         onUrlChange && onUrlChange(e);
                       }}
                     />
