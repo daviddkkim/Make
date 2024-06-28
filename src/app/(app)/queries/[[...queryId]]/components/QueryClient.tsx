@@ -21,12 +21,14 @@ import {
 } from "@/components/Select";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { FocusEventHandler, useState } from "react";
 import { theme } from "./JSONTreetheme";
 import { supabaseClient } from "@/libs/supabase/client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/Popover";
+import UrlComponent from "./UrlComponent";
+import { replaceUrlVariables } from "@/libs/variableExtractor";
 
 const formSchema = z.object({
   name: z.string(),
@@ -41,6 +43,8 @@ export default function QueryClient({
     name: "",
     method: "get",
   },
+  onUrlChange,
+  variables,
 }: {
   activeQuery?: {
     id?: number | null;
@@ -51,6 +55,8 @@ export default function QueryClient({
     method?: "get" | "post" | "put" | "patch" | "delete";
     url?: string;
   };
+  onUrlChange?: FocusEventHandler<HTMLDivElement>;
+  variables: { [key: string]: string };
 }) {
   const router = useRouter();
   const [response, setResponse] = useState();
@@ -67,7 +73,9 @@ export default function QueryClient({
   function onSubmit(values: z.infer<typeof formSchema>) {
     // to-do: Make request at server-side to dodge cors.
     try {
-      fetch(values.url, {
+      const finalUrl = replaceUrlVariables(values.url, variables);
+
+      fetch(finalUrl, {
         method: values.method,
       }).then(async (response) => {
         setResponse(await response.json());
@@ -176,7 +184,7 @@ export default function QueryClient({
               Save
             </Button>
           </div>
-          <div className="py-1 flex gap-2 w-full">
+          <div className="py-1 flex gap-2 w-full max-w-full">
             <FormField
               name="method"
               control={form.control}
@@ -187,7 +195,7 @@ export default function QueryClient({
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <SelectTrigger className="w-[160px]">
+                      <SelectTrigger className="w-[102px]">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -207,13 +215,28 @@ export default function QueryClient({
               name={"url"}
               control={form.control}
               render={({ field }) => (
-                <FormItem className="w-full">
+                <FormItem className="w-full max-w-[calc(100%-150px)]">
                   <FormControl>
+                    <UrlComponent
+                      {...field}
+                      url={field.value}
+                      placeholder="https://example.com/something"
+                      onBlur={(e) => {
+                        form.setValue(
+                          "url",
+                          e.currentTarget.textContent
+                            ? e.currentTarget.textContent
+                            : "",
+                        );
+                        onUrlChange && onUrlChange(e);
+                      }}
+                    />
+                    {/* 
                     <Input
                       placeholder="https://example.com/something"
                       {...field}
-                      className="w-full"
-                    />
+                      className="w-full hidden"
+                    /> */}
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -227,13 +250,13 @@ export default function QueryClient({
           <div className="bg-stone-100 rounded-md p-2 border text-sm flex flex-col">
             {response ? (
               <>
-                <p className="text-sm flex">
+                <div className="text-sm flex">
                   {" "}
                   <div className="rounded-md border border-green-600 bg-gradient-to-b from-green-500 to-green-600 w-[16px] h-[16px] flex items-center justify-center mr-1">
                     <Check size={10} className="text-green-50" />
                   </div>
                   Your query successfully ran
-                </p>
+                </div>
                 <JSONTree data={response} theme={theme} invertTheme={false} />
               </>
             ) : (
