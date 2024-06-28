@@ -1,22 +1,22 @@
 function extractVariables(url: string) {
-    const regex = /{{(.*?)}}/g;
-    const variables = [];
-    let match;
+  const regex = /{{(.*?)}}/g;
+  const variables = [];
+  let match;
 
-    while ((match = regex.exec(url)) !== null) {
-        variables.push(match[1]);
-    }
+  while ((match = regex.exec(url)) !== null) {
+    variables.push(match[1]);
+  }
 
-    return variables;
+  return variables;
 }
 
 function replaceUrlVariables(url: string, values: { [key: string]: string }) {
-    return url.replace(/{{(\w+)}}/g, (match, variable) => {
-        if (values[variable] === undefined) {
-            throw new Error(`Missing value for variable: ${variable}`);
-        }
-        return values[variable];
-    });
+  return url.replace(/{{(\w+)}}/g, (match, variable) => {
+    if (values[variable] === undefined) {
+      throw new Error(`Missing value for variable: ${variable}`);
+    }
+    return values[variable];
+  });
 }
 
 export { extractVariables, replaceUrlVariables };

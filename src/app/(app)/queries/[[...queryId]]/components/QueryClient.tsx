@@ -44,7 +44,7 @@ export default function QueryClient({
     method: "get",
   },
   onUrlChange,
-  variables
+  variables,
 }: {
   activeQuery?: {
     id?: number | null;
@@ -56,7 +56,7 @@ export default function QueryClient({
     url?: string;
   };
   onUrlChange?: FocusEventHandler<HTMLDivElement>;
-  variables: { [key: string]: string }
+  variables: { [key: string]: string };
 }) {
   const router = useRouter();
   const [response, setResponse] = useState();
