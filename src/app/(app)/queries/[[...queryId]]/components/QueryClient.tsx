@@ -28,6 +28,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/Popover";
 import UrlComponent from "./UrlComponent";
+import { replaceUrlVariables } from "@/libs/variableExtractor";
 
 const formSchema = z.object({
   name: z.string(),
@@ -43,6 +44,7 @@ export default function QueryClient({
     method: "get",
   },
   onUrlChange,
+  variables
 }: {
   activeQuery?: {
     id?: number | null;
@@ -54,6 +56,7 @@ export default function QueryClient({
     url?: string;
   };
   onUrlChange?: FocusEventHandler<HTMLDivElement>;
+  variables: { [key: string]: string }
 }) {
   const router = useRouter();
   const [response, setResponse] = useState();
@@ -70,7 +73,9 @@ export default function QueryClient({
   function onSubmit(values: z.infer<typeof formSchema>) {
     // to-do: Make request at server-side to dodge cors.
     try {
-      fetch(values.url, {
+      const finalUrl = replaceUrlVariables(values.url, variables);
+
+      fetch(finalUrl, {
         method: values.method,
       }).then(async (response) => {
         setResponse(await response.json());
