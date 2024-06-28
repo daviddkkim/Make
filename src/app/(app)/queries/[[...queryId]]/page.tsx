@@ -59,7 +59,10 @@ export default async function Page({
             </div>
           </Panel>,
           <PanelResizeHandle className="w-[1px] bg-stone-200" key={2} />,
-          <QueryBuilder activeQuery={activeQuery ? activeQuery[0] : {}} key={3} />,
+          <QueryBuilder
+            activeQuery={activeQuery ? activeQuery[0] : {}}
+            key={3}
+          />,
         ]}
       />
     </main>
