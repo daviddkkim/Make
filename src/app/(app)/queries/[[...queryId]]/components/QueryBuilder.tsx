@@ -28,7 +28,7 @@ export default function QueryBuilder({
 }) {
   const [url, setUrl] = useState(activeQuery.url);
   const [inputValues, setInputValues] = useState({});
-  const [urlTooltipOpen, setUrlTooltipOpen] = useState(false)
+  const [urlTooltipOpen, setUrlTooltipOpen] = useState(false);
   function onChangeHandler(e: any) {
     setUrl(e.currentTarget.innerText);
     setUrlTooltipOpen(false);
@@ -43,7 +43,7 @@ export default function QueryBuilder({
             activeQuery={activeQuery}
             onUrlChange={onChangeHandler}
             variables={inputValues}
-            onUrlInputFocus={()=>setUrlTooltipOpen(true)}
+            onUrlInputFocus={() => setUrlTooltipOpen(true)}
             urlTooltipOpen={urlTooltipOpen}
           />
         </div>
@@ -66,8 +66,8 @@ export default function QueryBuilder({
                       id={variable}
                       type="text"
                       key={variable}
-                      onFocus={()=>setUrlTooltipOpen(true)}
-                      onBlur={()=>setUrlTooltipOpen(false)}
+                      onFocus={() => setUrlTooltipOpen(true)}
+                      onBlur={() => setUrlTooltipOpen(false)}
                       onChange={(e) => {
                         setInputValues({
                           ...inputValues,

@@ -46,7 +46,7 @@ export default function QueryClient({
   onUrlChange,
   variables,
   urlTooltipOpen = false,
-  onUrlInputFocus
+  onUrlInputFocus,
 }: {
   activeQuery?: {
     id?: number | null;
@@ -60,8 +60,7 @@ export default function QueryClient({
   onUrlChange?: FocusEventHandler<HTMLDivElement>;
   variables: { [key: string]: string };
   urlTooltipOpen?: boolean;
-  onUrlInputFocus?: FocusEventHandler<HTMLDivElement>
-
+  onUrlInputFocus?: FocusEventHandler<HTMLDivElement>;
 }) {
   const router = useRouter();
   const [response, setResponse] = useState();
@@ -268,7 +267,11 @@ export default function QueryClient({
               </>
             ) : (
               <h2 className="text-sm text-stone-500 font-mono flex items-center gap-2">
-                Click               <Play size="20" className="text-stone-700 border border-stone-500 p-1 rounded-md" />
+                Click{" "}
+                <Play
+                  size="20"
+                  className="text-stone-700 border border-stone-500 p-1 rounded-md"
+                />
                 to run query
               </h2>
             )}
