@@ -18,7 +18,8 @@ export default function UrlComponent(props: DivProps) {
       contentEditable
       suppressContentEditableWarning={true}
       className={cn(
-        " leading-[30px] px-3 h-8 flex w-full max-w-full items-center border rounded-md overflow-scroll  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        " leading-[30px] px-3 h-8 flex w-full max-w-full items-center border-y overflow-scroll  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        props.className,
         props.url
           ? ""
           : "after:content-['https://example.com'] after:text-stone-400 focus-visible:after:hidden",

@@ -179,12 +179,11 @@ export default function QueryClient({
                 e.preventDefault();
                 onSave(form.getValues());
               }}
-              variant={"secondary"}
             >
               Save
             </Button>
           </div>
-          <div className="py-1 flex gap-2 w-full max-w-full">
+          <div className="py-1 flex w-full max-w-full">
             <FormField
               name="method"
               control={form.control}
@@ -195,7 +194,7 @@ export default function QueryClient({
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <SelectTrigger className="w-[102px]">
+                      <SelectTrigger className="w-[102px] rounded-r-none">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -242,7 +241,7 @@ export default function QueryClient({
                 </FormItem>
               )}
             />
-            <Button type="submit" size={"icon"}>
+            <Button type="submit" className="rounded-l-none">
               {" "}
               <Play size="14" className="text-stone-50" />
             </Button>
@@ -260,8 +259,9 @@ export default function QueryClient({
                 <JSONTree data={response} theme={theme} invertTheme={false} />
               </>
             ) : (
-              <h2 className="text-sm text-stone-500">
-                Click submit to run query
+              <h2 className="text-sm text-stone-500 font-mono flex items-center gap-2">
+                Click               <Play size="20" className="text-stone-700 border border-stone-500 p-1 rounded-md" />
+                to run query
               </h2>
             )}
           </div>

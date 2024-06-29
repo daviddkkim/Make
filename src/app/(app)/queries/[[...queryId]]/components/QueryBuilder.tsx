@@ -75,10 +75,10 @@ export default function QueryBuilder({
           ) : (
             <div className="font-mono  flex ">
               <InfoIcon
-                className="flex-shrink-0 mr-2 mt-[2px] text-stone-500"
-                size={16}
+                className="flex-shrink-0 mr-2 mt-[1px] text-stone-500"
+                size={14}
               />
-              <span className="flex-grow text-stone-700">
+              <span className="flex-grow text-stone-500 text-xs">
                 {
                   "This query has no variables. Use {{ variableName }} to add variables to the URL."
                 }
