@@ -1,9 +1,7 @@
 import { cn } from "@/libs/utils";
 
-
 function replaceUrlVariablesWithHighlight(url: string) {
   return url.replace(/{{(\s*\w+\s*)}}/g, (_match, variable) => {
-   
     return `<span class="bg-indigo-200/80 leading-[22px] rounded-sm">{{${variable.trim()}}}</span>`;
   });
 }
