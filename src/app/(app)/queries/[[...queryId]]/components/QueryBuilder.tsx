@@ -37,7 +37,7 @@ export default function QueryBuilder({
   const variables = extractVariables(url ? url : "");
   return (
     <TooltipProvider>
-      <Panel className="px-4 py-2" key={3} defaultSize={55}>
+      <Panel key={3} defaultSize={55}>
         <div style={{ overflow: "auto" }} className="h-full">
           <QueryClient
             activeQuery={activeQuery}

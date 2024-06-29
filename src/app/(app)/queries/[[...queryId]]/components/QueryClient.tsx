@@ -123,8 +123,8 @@ export default function QueryClient({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="rounded-md w-full flex flex-col gap-2">
-          <div className="flex justify-between border-b w-full">
+        <div className="rounded-md w-full flex flex-col gap-2 py-4">
+          <div className="flex justify-between border-b w-full px-3 pb-1">
             <div>
               <FormField
                 name={"name"}
@@ -187,7 +187,7 @@ export default function QueryClient({
               Save
             </Button>
           </div>
-          <div className="py-1 flex w-full max-w-full">
+          <div className="py-1 flex w-full max-w-full px-3">
             <FormField
               name="method"
               control={form.control}
@@ -253,7 +253,7 @@ export default function QueryClient({
               <Play size="14" className="text-stone-50" />
             </Button>
           </div>
-          <div className="bg-stone-100 rounded-md p-2 border text-sm flex flex-col">
+          <div className="bg-stone-100 rounded-md p-2 border text-sm flex flex-col mx-3">
             {response ? (
               <>
                 <div className="text-sm flex">
