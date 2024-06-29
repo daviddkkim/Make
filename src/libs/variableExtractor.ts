@@ -4,7 +4,7 @@ function extractVariables(url: string) {
   let match;
 
   while ((match = regex.exec(url)) !== null) {
-    variables.push(match[1]);
+    variables.push(match[1].trim());
   }
 
   return variables;

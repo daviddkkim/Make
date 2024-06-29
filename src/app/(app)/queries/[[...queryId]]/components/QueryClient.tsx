@@ -45,6 +45,8 @@ export default function QueryClient({
   },
   onUrlChange,
   variables,
+  urlTooltipOpen = false,
+  onUrlInputFocus,
 }: {
   activeQuery?: {
     id?: number | null;
@@ -57,6 +59,8 @@ export default function QueryClient({
   };
   onUrlChange?: FocusEventHandler<HTMLDivElement>;
   variables: { [key: string]: string };
+  urlTooltipOpen?: boolean;
+  onUrlInputFocus?: FocusEventHandler<HTMLDivElement>;
 }) {
   const router = useRouter();
   const [response, setResponse] = useState();
@@ -119,8 +123,8 @@ export default function QueryClient({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="rounded-md w-full flex flex-col gap-2">
-          <div className="flex justify-between border-b w-full">
+        <div className="rounded-md w-full flex flex-col gap-2 py-4">
+          <div className="flex justify-between border-b w-full px-3 pb-1">
             <div>
               <FormField
                 name={"name"}
@@ -179,12 +183,11 @@ export default function QueryClient({
                 e.preventDefault();
                 onSave(form.getValues());
               }}
-              variant={"secondary"}
             >
               Save
             </Button>
           </div>
-          <div className="py-1 flex gap-2 w-full max-w-full">
+          <div className="py-1 flex w-full max-w-full px-3">
             <FormField
               name="method"
               control={form.control}
@@ -195,7 +198,7 @@ export default function QueryClient({
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <SelectTrigger className="w-[102px]">
+                      <SelectTrigger className="w-[102px] rounded-r-none">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
@@ -215,11 +218,14 @@ export default function QueryClient({
               name={"url"}
               control={form.control}
               render={({ field }) => (
-                <FormItem className="w-full max-w-[calc(100%-150px)]">
+                <FormItem className="w-full max-w-[calc(100%-134px)]">
                   <FormControl>
                     <UrlComponent
                       {...field}
+                      tooltipOpen={urlTooltipOpen}
+                      variables={variables}
                       url={field.value}
+                      onFocus={onUrlInputFocus}
                       placeholder="https://example.com/something"
                       onBlur={(e) => {
                         form.setValue(
@@ -242,17 +248,17 @@ export default function QueryClient({
                 </FormItem>
               )}
             />
-            <Button type="submit" size={"icon"}>
+            <Button type="submit" size="icon" className="rounded-l-none">
               {" "}
               <Play size="14" className="text-stone-50" />
             </Button>
           </div>
-          <div className="bg-stone-100 rounded-md p-2 border text-sm flex flex-col">
+          <div className="bg-stone-100 rounded-md p-2 border text-sm flex flex-col mx-3">
             {response ? (
               <>
                 <div className="text-sm flex">
                   {" "}
-                  <div className="rounded-md border border-green-600 bg-gradient-to-b from-green-500 to-green-600 w-[16px] h-[16px] flex items-center justify-center mr-1">
+                  <div className="rounded-md border border-green-600 bg-gradient-to-b from-green-500 to-green-600 w-[16px] h-[16px] flex items-center justify-center mr-2 mt-[2px]">
                     <Check size={10} className="text-green-50" />
                   </div>
                   Your query successfully ran
@@ -260,8 +266,13 @@ export default function QueryClient({
                 <JSONTree data={response} theme={theme} invertTheme={false} />
               </>
             ) : (
-              <h2 className="text-sm text-stone-500">
-                Click submit to run query
+              <h2 className="text-sm text-stone-500 font-mono flex items-center gap-2">
+                Click{" "}
+                <Play
+                  size="20"
+                  className="text-stone-700 border border-stone-500 p-1 rounded-md"
+                />
+                to run query
               </h2>
             )}
           </div>
