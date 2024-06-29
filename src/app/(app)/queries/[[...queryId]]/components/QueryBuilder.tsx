@@ -7,6 +7,7 @@ import { extractVariables } from "@/libs/variableExtractor";
 import { Label } from "@/components/Label";
 import { Input } from "@/components/Input";
 import { InfoIcon } from "lucide-react";
+import { TooltipProvider } from "@/components/Tooltip";
 
 export default function QueryBuilder({
   activeQuery = {
@@ -27,19 +28,23 @@ export default function QueryBuilder({
 }) {
   const [url, setUrl] = useState(activeQuery.url);
   const [inputValues, setInputValues] = useState({});
+  const [urlTooltipOpen, setUrlTooltipOpen] = useState(false)
   function onChangeHandler(e: any) {
     setUrl(e.currentTarget.innerText);
+    setUrlTooltipOpen(false);
   }
 
   const variables = extractVariables(url ? url : "");
   return (
-    <>
+    <TooltipProvider>
       <Panel className="px-4 py-2" key={3} defaultSize={55}>
         <div style={{ overflow: "auto" }} className="h-full">
           <QueryClient
             activeQuery={activeQuery}
             onUrlChange={onChangeHandler}
             variables={inputValues}
+            onUrlInputFocus={()=>setUrlTooltipOpen(true)}
+            urlTooltipOpen={urlTooltipOpen}
           />
         </div>
       </Panel>
@@ -61,6 +66,8 @@ export default function QueryBuilder({
                       id={variable}
                       type="text"
                       key={variable}
+                      onFocus={()=>setUrlTooltipOpen(true)}
+                      onBlur={()=>setUrlTooltipOpen(false)}
                       onChange={(e) => {
                         setInputValues({
                           ...inputValues,
@@ -87,6 +94,6 @@ export default function QueryBuilder({
           )}
         </div>
       </Panel>
-    </>
+    </TooltipProvider>
   );
 }

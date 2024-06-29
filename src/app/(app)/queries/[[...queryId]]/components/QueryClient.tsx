@@ -45,6 +45,8 @@ export default function QueryClient({
   },
   onUrlChange,
   variables,
+  urlTooltipOpen = false,
+  onUrlInputFocus
 }: {
   activeQuery?: {
     id?: number | null;
@@ -57,6 +59,9 @@ export default function QueryClient({
   };
   onUrlChange?: FocusEventHandler<HTMLDivElement>;
   variables: { [key: string]: string };
+  urlTooltipOpen?: boolean;
+  onUrlInputFocus?: FocusEventHandler<HTMLDivElement>
+
 }) {
   const router = useRouter();
   const [response, setResponse] = useState();
@@ -214,11 +219,14 @@ export default function QueryClient({
               name={"url"}
               control={form.control}
               render={({ field }) => (
-                <FormItem className="w-full max-w-[calc(100%-150px)]">
+                <FormItem className="w-full max-w-[calc(100%-134px)]">
                   <FormControl>
                     <UrlComponent
                       {...field}
+                      tooltipOpen={urlTooltipOpen}
+                      variables={variables}
                       url={field.value}
+                      onFocus={onUrlInputFocus}
                       placeholder="https://example.com/something"
                       onBlur={(e) => {
                         form.setValue(
@@ -241,7 +249,7 @@ export default function QueryClient({
                 </FormItem>
               )}
             />
-            <Button type="submit" className="rounded-l-none">
+            <Button type="submit" size="icon" className="rounded-l-none">
               {" "}
               <Play size="14" className="text-stone-50" />
             </Button>
@@ -251,7 +259,7 @@ export default function QueryClient({
               <>
                 <div className="text-sm flex">
                   {" "}
-                  <div className="rounded-md border border-green-600 bg-gradient-to-b from-green-500 to-green-600 w-[16px] h-[16px] flex items-center justify-center mr-1">
+                  <div className="rounded-md border border-green-600 bg-gradient-to-b from-green-500 to-green-600 w-[16px] h-[16px] flex items-center justify-center mr-2 mt-[2px]">
                     <Check size={10} className="text-green-50" />
                   </div>
                   Your query successfully ran
