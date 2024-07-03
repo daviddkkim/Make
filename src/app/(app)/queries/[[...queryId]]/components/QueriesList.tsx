@@ -39,10 +39,14 @@ export default function QueriesList({
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-stone-100 h-full">
       <div className="px-4 pt-4 pb-2">
-        <Button className="w-full" onClick={createNewQuery}>
-          <PlusIcon size={16} className="text-stone-50 mr-1 flex-none" />
+        <Button
+          variant={"secondary"}
+          className="w-full"
+          onClick={createNewQuery}
+        >
+          <PlusIcon size={16} className="text-stone-900 mr-1 flex-none" />
           <span className="truncate"> New query</span>
         </Button>
       </div>
