@@ -3,7 +3,7 @@ export default function Page() {
     <main className="bg-stone-50 h-screen w-full py-2 ">
       <div className="flex gap-5 flex flex-row flex-wrap mt-4 mb-5 mx-4 ">
         <h2 className=" max-w-[88px] text-base mt-6">Get started</h2>
-        <div className="flex flex-wrap gap-5 w-full max-w-[1080px]">
+        <div className="flex flex-wrap gap-5  flex-grow">
           <div className="w-full  h-[106px] border rounded-md p-4 md:max-w-[320px]">
             <div className="h-[4px] w-[32px] bg-gradient-to-r from-blue-500 to-blue-600 border border-blue-600 rounded-sm mb-1" />
             <div>
@@ -36,6 +36,11 @@ export default function Page() {
         </div>
       </div>
       <div className="w-full border-b" />
+      <div className="flex gap-5 flex flex-col flex-wrap mt-4 mb-5 mx-4 ">
+        <h2 className=" max-w-[88px] text-base mt-6">Your apps</h2>
+        <div className="flex flex-wrap gap-5 flex-grow rounded-md border h-[300px]">
+        </div>
+      </div>
     </main>
   );
 }
