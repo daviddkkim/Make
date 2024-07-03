@@ -9,10 +9,7 @@ import { Input } from "@/components/Input";
 import { InfoIcon } from "lucide-react";
 import { TooltipProvider } from "@/components/Tooltip";
 
-export default function DemoQueryBuilder({
-
-}: {
-}) {
+export default function DemoQueryBuilder({}: {}) {
   const [url, setUrl] = useState("");
   const [inputValues, setInputValues] = useState({});
   const [urlTooltipOpen, setUrlTooltipOpen] = useState(false);
