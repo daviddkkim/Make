@@ -48,7 +48,7 @@ const TopNavigation = () => {
         />
         <SignedOut>
           <SignInButton>
-            <Button>Sign in</Button>
+            <Button variant={"secondary"}>Sign in</Button>
           </SignInButton>
         </SignedOut>
         <SignedIn>

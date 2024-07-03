@@ -14,7 +14,7 @@ const buttonVariants = cva(
         destructive: "bg-red-600 text-red-950 hover:bg-red-700",
         outline: "text-stone-1200 border bg-transparent hover:bg-stone-100",
         secondary:
-          "bg-gradient-to-b from-stone-100 to-white border text-stone-700  hover:from-stone-100 hover:to-stone-100 hover:text-stone-950",
+          "bg-gradient-to-b from-white to-stone-100 border text-stone-700  hover:from-stone-100 hover:to-stone-100 hover:text-stone-950",
         ghost: "text-stone-600 hover:bg-stone-200/50 hover:text-stone-800",
         link: "text-stone-700 underline-offset-4 hover:underline hover:text-stone-950",
       },
