@@ -8,21 +8,30 @@ export default function Page() {
             <div className="h-[4px] w-[32px] bg-gradient-to-r from-blue-500 to-blue-600 border border-blue-600 rounded-sm mb-1" />
             <div>
               <h2 className="text-sm">Action apps</h2>
-              <p className="text-xs text-stone-600"> Take actions based on a query like scheduling queries, loading databases, or sending messages</p>
+              <p className="text-xs text-stone-600">
+                {" "}
+                Take actions based on a query like scheduling queries, loading
+                databases, or sending messages
+              </p>
             </div>
           </div>
           <div className="w-full  h-[106px] border rounded-md p-4 md:max-w-[320px]">
             <div className="h-[4px] w-[32px] bg-gradient-to-r from-orange-500 to-orange-600 border border-orange-600 rounded-sm mb-1" />
 
             <h2 className="text-sm">UI apps</h2>
-            <p className="text-xs text-stone-600"> Render a UI based on a query result or to prepare a query</p>
+            <p className="text-xs text-stone-600">
+              {" "}
+              Render a UI based on a query result or to prepare a query
+            </p>
           </div>
           <div className="w-full  h-[106px] border rounded-md p-4 md:max-w-[320px]">
             <div className="h-[4px] w-[32px] bg-gradient-to-r from-stone-700 to-stone-900 border border-stone-600 rounded-sm mb-1" />
 
             <h2 className="text-sm">APIs</h2>
-            <p className="text-xs text-stone-600"> Set up and host an API based on a query</p>
-
+            <p className="text-xs text-stone-600">
+              {" "}
+              Set up and host an API based on a query
+            </p>
           </div>
         </div>
       </div>
