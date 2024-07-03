@@ -13,8 +13,13 @@ export default function Home() {
   return (
     <div className="bg-stone-100 w-full h-screen px-4 py-2 flex items-center justify-center">
       <div className="flex items-start gap-8">
-        <h2 className="text-xl mt-4 flex items-center">Let's <div className="font-mono px-2 w-fit h-[24px] bg-[#0300E0] rounded-md text-base flex items-center justify-center text-stone-100 mx-2"
-        >.make</div> apps the easy way</h2>
+        <h2 className="text-xl mt-4 flex items-center">
+          Let's{" "}
+          <div className="font-mono px-2 w-fit h-[24px] bg-[#0300E0] rounded-md text-base flex items-center justify-center text-stone-100 mx-2">
+            .make
+          </div>{" "}
+          apps the easy way
+        </h2>
         <Carousel className="w-full max-w-[300px] md:max-w-[800px] ">
           <CarouselContent>
             <CarouselItem>
