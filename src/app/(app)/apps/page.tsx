@@ -38,8 +38,7 @@ export default function Page() {
       <div className="w-full border-b" />
       <div className="flex gap-5 flex flex-col flex-wrap mt-4 mb-5 mx-4 ">
         <h2 className=" max-w-[88px] text-base mt-6">Your apps</h2>
-        <div className="flex flex-wrap gap-5 flex-grow rounded-md border h-[300px]">
-        </div>
+        <div className="flex flex-wrap gap-5 flex-grow rounded-md border h-[300px]"></div>
       </div>
     </main>
   );
