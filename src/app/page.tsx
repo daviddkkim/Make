@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Carousel,
@@ -6,7 +6,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/carousel"
+} from "@/components/carousel";
 import QueryBuilder from "./(app)/queries/[[...queryId]]/components/QueryBuilder";
 import { PanelGroup } from "react-resizable-panels";
 
@@ -19,12 +19,8 @@ export default function Home() {
             {
               <div className="w-full h-[300px] flex items-center justify-center border rounded-md bg-white">
                 <PanelGroup autoSaveId="persistence" direction="horizontal">
-                  <QueryBuilder
-                    activeQuery={{}}
-                    key={3}
-                  />
+                  <QueryBuilder activeQuery={{}} key={3} />
                 </PanelGroup>
-                
               </div>
             }
           </CarouselItem>
