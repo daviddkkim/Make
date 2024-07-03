@@ -7,9 +7,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/carousel";
-import QueryBuilder from "./(app)/queries/[[...queryId]]/components/QueryBuilder";
 import { PanelGroup } from "react-resizable-panels";
-
+import DemoQueryBuilder from "./components/DemoQueryBuilder";
 export default function Home() {
   return (
     <div className="bg-stone-100 w-full h-screen px-4 py-2 flex items-center justify-center">
@@ -19,7 +18,7 @@ export default function Home() {
             {
               <div className="w-full h-[300px] flex items-center justify-center border rounded-md bg-white">
                 <PanelGroup autoSaveId="persistence" direction="horizontal">
-                  <QueryBuilder activeQuery={{}} key={3} />
+                  <DemoQueryBuilder key={3} />
                 </PanelGroup>
               </div>
             }

@@ -9,7 +9,6 @@ export default function Page() {
             <div>
               <h2 className="text-sm">Action apps</h2>
               <p className="text-xs text-stone-600">
-                {" "}
                 Take actions based on a query like scheduling queries, loading
                 databases, or sending messages
               </p>
@@ -17,7 +16,6 @@ export default function Page() {
           </div>
           <div className="w-full  h-[106px] border rounded-md p-4 md:max-w-[320px]">
             <div className="h-[4px] w-[32px] bg-gradient-to-r from-orange-500 to-orange-600 border border-orange-600 rounded-sm mb-1" />
-
             <h2 className="text-sm">UI apps</h2>
             <p className="text-xs text-stone-600">
               {" "}
@@ -29,7 +27,6 @@ export default function Page() {
 
             <h2 className="text-sm">APIs</h2>
             <p className="text-xs text-stone-600">
-              {" "}
               Set up and host an API based on a query
             </p>
           </div>
