@@ -18,7 +18,9 @@ import {
 } from "@/components/Select";
 import { Label } from "@/components/Label";
 import { useState } from "react";
-import { Button } from "@/components/Button";
+import { Button, buttonVariants } from "@/components/Button";
+import Link from "next/link";
+import { cn } from "@/libs/utils";
 export default function Home() {
   const [appType, setAppType] = useState("scheduled");
 
@@ -107,7 +109,16 @@ export default function Home() {
                         </Select>
                       </div>
                     )}
-                    <Button className="w-fit"> Save</Button>
+                    <Link
+                      className={cn(
+                        buttonVariants({ variant: "default" }),
+                        "w-fit",
+                      )}
+                      href="/queries"
+                    >
+                      {" "}
+                      Save
+                    </Link>
                   </div>
                 </div>
               }
