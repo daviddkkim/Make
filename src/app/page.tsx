@@ -25,16 +25,16 @@ export default function Home() {
   const [appType, setAppType] = useState("scheduled");
 
   return (
-    <div className="bg-stone-100 w-full h-screen px-4 py-2 flex items-center justify-center">
-      <div className="flex items-start gap-8">
+    <div className="bg-stone-100 w-screen h-screen px-4 py-2 flex items-center justify-center">
+      <div className="w-full flex items-start gap-8 flex-col md:flex-row justify-center">
         <h1 className="text-xl flex items-center">
           Let{"'"}s{" "}
-          <div className="font-mono px-2 w-fit h-[24px] bg-[#0300E0] rounded-md text-base flex items-center justify-center text-stone-100 mx-2">
+          <span className="font-mono px-2 w-fit h-[24px] bg-[#0300E0] rounded-md text-base flex items-center justify-center text-stone-100 mx-2">
             .make
-          </div>{" "}
+          </span>{" "}
           apps the easy way
         </h1>
-        <Carousel className="w-full max-w-[300px] md:max-w-[800px] ">
+        <Carousel className="w-full max-w-full md:max-w-[800px] ">
           <CarouselContent>
             <CarouselItem>
               <h2 className="font-medium text-base mb-4 flex items-center gap-2 mt-1">
