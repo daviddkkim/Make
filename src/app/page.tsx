@@ -109,10 +109,16 @@ export default function Home() {
                         </Select>
                       </div>
                     )}
-                    <Link className={cn(
-                      buttonVariants({ variant: "default" }),
-                      "w-fit"
-                    )} href="/queries" > Save</Link>
+                    <Link
+                      className={cn(
+                        buttonVariants({ variant: "default" }),
+                        "w-fit",
+                      )}
+                      href="/queries"
+                    >
+                      {" "}
+                      Save
+                    </Link>
                   </div>
                 </div>
               }
