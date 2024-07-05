@@ -26,7 +26,7 @@ export default function Home() {
     <div className="bg-stone-100 w-full h-screen px-4 py-2 flex items-center justify-center">
       <div className="flex items-start gap-8">
         <h1 className="text-xl flex items-center">
-          Let's{" "}
+          Let{"'"}s{" "}
           <div className="font-mono px-2 w-fit h-[24px] bg-[#0300E0] rounded-md text-base flex items-center justify-center text-stone-100 mx-2">
             .make
           </div>{" "}
