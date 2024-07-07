@@ -2,9 +2,8 @@ import {
   PanelLayout,
   Panel,
   PanelResizeHandle,
-} from "./components/PanelLayout";
+} from "@/components/PanelLayout";
 import { createClerkSupabaseServerClient } from "@/libs/supabase/server";
-import QueryClient from "./components/QueryClient";
 import QueriesList from "./components/QueriesList";
 import QueryBuilder from "./components/QueryBuilder";
 
